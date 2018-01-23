@@ -141,7 +141,14 @@ def playGame(wordList):
                 continue 
         elif RelpyGame == 'r':
             try:
-                playHand(Newhand, wordList, HAND_SIZE) or compPlayHand(compHand, wordList, HAND_SIZE) 
+                ComputerGame = input("Enter u to have yourself play, c to have the computer play: ")
+                if ComputerGame == 'u':
+                    playHand(Newhand, wordList, HAND_SIZE)  
+                elif ComputerGame == 'c':
+                    compPlayHand(compHand, wordList, HAND_SIZE)
+                else:
+                    print ('Invalid command')
+                    continue 
             except:
                 print('You have not played a hand yet. Please play a new hand first!')
                 continue
