@@ -124,11 +124,34 @@ def playGame(wordList):
 
     wordList: list (string)
     """
-    
-    
-    RelpyGame = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
-    
-    ComputerGame = input("Enter u to have yourself play, c to have the computer play: ")
+    PlayWordgame = True
+    while PlayWordgame == True:
+        RelpyGame = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+       
+        if RelpyGame == 'n':
+            ComputerGame = input("Enter u to have yourself play, c to have the computer play: ")
+            if ComputerGame == 'u':
+                Newhand = dealHand(HAND_SIZE)
+                playHand(Newhand, wordList, HAND_SIZE)
+            elif ComputerGame == 'c':
+                compHand = dealHand(HAND_SIZE)
+                compPlayHand(compHand, wordList, HAND_SIZE)
+            else:
+                print ('Invalid command')
+                continue 
+        elif RelpyGame == 'r':
+            try:
+                playHand(Newhand, wordList, HAND_SIZE) or compPlayHand(compHand, wordList, HAND_SIZE) 
+            except:
+                print('You have not played a hand yet. Please play a new hand first!')
+                continue
+        elif RelpyGame == 'e':
+            PlayWordgame = False
+        else:
+            print ('Invalid command')
+            continue 
+        
+       
         
 #
 # Build data structures used for entire session and play game
